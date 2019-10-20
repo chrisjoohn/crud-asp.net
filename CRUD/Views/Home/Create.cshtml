@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{ViewData["Title"] = "Create"; }
+
+@model CRUD.Models.Student
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h3>CREATE STUDENT</h3>
+        <div class="form-group">
+            <label>
+                First name:
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.First_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.First_name, "", new { @class = "text-danger" })
+            </div>
+            <label>
+                Middle name:
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Middle_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Middle_name, "", new { @class = "text-danger" })
+            </div>
+            <label>
+                Last name:
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Last_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Last_name, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+        <h3>
+            @ViewBag.Message
+        </h3>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

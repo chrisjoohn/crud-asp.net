@@ -1,0 +1,51 @@
+﻿
+
+@model IEnumerable<CRUD.Models.Student>
+
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+
+
+<div class="text-center">
+<table>
+<tr>
+    <th>
+        First Name
+    </th>
+    <th>
+        Middle Name
+    </th>
+    <th>
+        Last Name
+    </th>
+    <th>
+        Action
+    </th>
+</tr>
+
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.First_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Middle_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Last_name)
+    </td>
+    <td>
+    @Html.ActionLink("Edit", "Update", new { id = item.StudentId}) |
+    @Html.ActionLink("Delete", "Delete", new { id=item.StudentId}, new { onclick = "return confirm('Are you sure you want to delete this?');"})
+</td>
+</tr>
+}
+</table>
+<h3>
+    @ViewBag.DeleteMessage
+</h3>
+</div>
